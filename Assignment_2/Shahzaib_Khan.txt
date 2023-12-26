@@ -1,0 +1,136 @@
+void main() {
+  //Assignment # 02 => shahzaibKhan
+  //1. Take XY coordinate and determine in which quadrant the coordinate point lies.
+  int x = 2;
+  int y = -2;
+  if (x > 0 && y > 0) {
+    // x=>positive , y=>positive
+    print("1st Quadrant");
+  } else if (x < 0 && y > 0) {
+    // x=>negative, y=> positive
+    print('2nd Quadrant');
+  } else if (x < 0 && y < 0) {
+    // x=> negative , y=> negative
+    print('3rd Quadrant');
+  } else {
+    print('4th Quadrant'); // x=>positve , y=> negative
+  }
+
+ OUTPUT : 4th Quadrant
+
+
+//========================================================================================================
+
+
+
+  //2. Take three numbers and find a maximum between three numbers.
+  int number1 = 51;
+  int number2 = 10;
+  int number3 = 71;
+
+  if ((number1 > number2) && (number1 > number3)) {
+    //logic for number1
+    print('$number1 is greater');
+  } else if ((number2 > number1) && (number2 > number3)) {
+    // lofic for number2
+    print('$number2 is greater');
+  } else {
+    print('$number3  is greater'); // otherwise print number3
+  }
+
+  OUTPUT : 71  is greater
+
+
+//========================================================================================================
+
+
+
+  //3. Print the multiplication table of a number till 10.
+  // multiplication table of 5.
+  for (int i = 1; i <= 10; i++) {
+    print("5 x $i = ${5 * i}");
+  }
+
+OUTPUT : 
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50
+
+  //4. Calculate the sum of first 20 Odd numbers.
+  int sum = 0;
+  for (int i = 0; i <= 20; i++) {
+    if (i % 2 != 0) {
+      print(i); // show odd ones
+      sum += i; // collect sum of all odd ones
+    }
+  }
+  print('The sum of all odd number till 20 is $sum');
+
+OUTPUT : 
+1
+3
+5
+7
+9
+11
+13
+15
+17
+19
+The sum of all odd number till 20 is 100
+
+
+//========================================================================================================
+
+
+
+
+  //5. Calculate the factorial of a number.
+  // Example: Factorial of 5 is 120.
+  // Explanation: 1*2*3*4*5 = 120
+  int factorial = 1; // declear variable for factorial
+  int fac = 5; // declear variable for iterable
+  for (int i = 1; i <= fac; i++) {
+    print('$factorial x $i =  ${factorial * i}'); // Reference
+    factorial *= i; // add values in variable
+  }
+  print(factorial); //show output
+
+OUTPUT : 
+1 x 1 =  1
+1 x 2 =  2
+2 x 3 =  6
+6 x 4 =  24
+24 x 5 =  120
+120
+
+
+
+//========================================================================================================
+
+
+
+  //6 Check if the given number is prime or composite.
+  int n = 6;
+  int count = 0;
+  for (int i = 2; i <= n; i++) {
+    if (n % i == 0) {
+      count++;
+    }
+  }
+  if (count == 1) {
+    //as we know prime number always factor with itself i.e only 1 factor
+    print('Prime');
+  } else {
+    print('Composite'); // composite number always at least 2 factors
+  }
+}
+
+OUTPUT : Prime
