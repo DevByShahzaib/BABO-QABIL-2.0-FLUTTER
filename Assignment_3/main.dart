@@ -1,0 +1,140 @@
+void main() {
+  // $$$$$$$$$ 1. Solve all the 2nd assignment’s questions using function. $$$$$$$$$$$
+  //Assignment # 03
+  //1. Take XY coordinate and determine in which quadrant the coordinate point lies.
+  checkCoordinate(1, -1);
+  //==========================================================================
+
+  //2. Take three numbers and find a maximum between three numbers.
+  checkMaxNumber(10, 20, 30);
+  //==========================================================================
+
+  //3. Print the multiplication table of a number till 10.
+  // multiplication table of 5.
+  generateTable(10);
+  //==========================================================================
+
+  //4. Calculate the sum of first 20 Odd numbers.
+  sumOddIntegers(50);
+  //==========================================================================
+
+  //5. Calculate the factorial of a number.
+  // Example: Factorial of 5 is 120.
+  // Explanation: 1*2*3*4*5 = 120
+  checkFactorial(10);
+  //==========================================================================
+
+  //6)Check if the given number is prime or composite.
+  checkPrimeComposite(23);
+  //==========================================================================
+
+  // $$$$$  2. Create a function with named parameters for first name, last name, and age. Print a
+  // formatted string using these parameters. $$$$$
+  nameParameterFunction(firstName: 'Shahzaib', lastName: 'Khan', age: 20);
+  //==========================================================================
+
+  //   3. Create a function to check if the string is a palindrome or not. Function should
+  // return boolean value.
+  print(checkPalindrome("maasssaam"));
+}
+
+void checkCoordinate(int x, y) {
+  if (x > 0 && y > 0) {
+    // x=>positive , y=>positive
+    print("1st Quadrant");
+  } else if (x < 0 && y > 0) {
+    // x=>negative, y=> positive
+    print('2nd Quadrant');
+  } else if (x < 0 && y < 0) {
+    // x=> negative , y=> negative
+    print('3rd Quadrant');
+  } else {
+    print('4th Quadrant'); // x=>positve , y=> negative
+  }
+}
+
+//==============================================================================
+
+void checkMaxNumber(int number1, number2, number3) {
+  if ((number1 > number2) && (number1 > number3)) {
+    //logic for number1
+    print('$number1 is greater');
+  } else if ((number2 > number1) && (number2 > number3)) {
+    // lofic for number2
+    print('$number2 is greater');
+  } else {
+    print('$number3  is greater'); // otherwise print number3
+  }
+}
+
+//==============================================================================
+
+void generateTable(int table) {
+  for (int i = 1; i <= 10; i++) {
+    print("$table x $i = ${table * i}");
+  }
+}
+
+//==============================================================================
+
+void sumOddIntegers(int till) {
+  int sum = 0;
+  for (int i = 0; i <= till; i++) {
+    if (i % 2 != 0) {
+      print(i); // show odd ones
+      sum += i; // collect sum of all odd ones
+    }
+  }
+  print(' The sum of all first $till odd numbers is $sum');
+}
+
+//==========================================================================
+
+void checkFactorial(int fac) {
+  int factorial = 1; // declear variable for factorial
+  for (int i = 1; i <= fac; i++) {
+    print('$factorial x $i =  ${factorial * i}'); // Reference
+    factorial *= i; // add values in variable
+  }
+  print(factorial); //show output
+}
+
+//==========================================================================
+
+void checkPrimeComposite(int n) {
+  int count = 0;
+  for (int i = 2; i <= n; i++) {
+    if (n % i == 0) {
+      count++;
+    }
+  }
+  if (count == 1) {
+    //as we know prime number always factor with itself i.e only 1 factor
+    print('prime');
+  } else {
+    print('Composite'); // composite number always at least 2 factors
+  }
+}
+
+//===========================================================================
+
+void nameParameterFunction(
+    {required String firstName, required lastName, required int age}) {
+  print(
+      "My first name is  $firstName\nMy last name is $lastName\nI'm $age years old Bano Qabil Student");
+}
+
+//==========================================================================
+
+bool checkPalindrome(String checkSample) {
+  List b = checkSample.split('');
+  String rev = '';
+  for (var i = b.length - 1; i >= 0; i--) {
+    rev += b[i];
+  }
+  if (checkSample == rev) {
+    return true;
+  } else {
+    return false;
+  }
+}
