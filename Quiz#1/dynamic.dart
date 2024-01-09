@@ -25,8 +25,13 @@ void main() {
   int nLength = int.parse(stdin.readLineSync()!);
   stdout.write("How many Special Charactors do you want in password..? :");
   int sLength = int.parse(stdin.readLineSync()!);
-  generatePassword(
-      passwordLength: pLength, numberLength: nLength, speciallength: sLength);
+  if (pLength >= (sLength + nLength)) {
+    generatePassword(
+        passwordLength: pLength, numberLength: nLength, speciallength: sLength);
+  } else {
+    print(
+        "Password Length must be greater than The sum of numbers and special charactors");
+  }
 }
 
 void generatePassword(
@@ -37,7 +42,7 @@ void generatePassword(
 
   String password = '';
 
-  List specialCharactor = ['/', ',', '#', '@', '\$', '!', '&', '*', '(', ')'];
+  String specialCharactor = '/,#@\$!&*()_%^~?|';
   String specialnumbers = '124567890';
   String passSpecial = '';
   String passnumber = '';
@@ -79,13 +84,15 @@ void generatePassword(
   }
   num percentageSpecailCharactor = (specialCount / password.length) * 100;
   num percentageNumbers = (numberCount / password.length) * 100;
-  if (percentageSpecailCharactor >= 40 && percentageNumbers >= 30) {
+  num totalAccuracy = percentageNumbers + percentageSpecailCharactor;
+  print(totalAccuracy);
+  if (totalAccuracy >= 50) {
     print("Strong Password");
-  } else if (percentageSpecailCharactor >= 30 && percentageNumbers >= 20) {
+  } else if (totalAccuracy >= 40) {
     print("Good password");
-  } else if (percentageSpecailCharactor >= 20 && percentageNumbers >= 10) {
+  } else if (totalAccuracy >= 30) {
     print("Fair password");
-  } else if (percentageSpecailCharactor >= 10 && percentageNumbers >= 5) {
+  } else if (totalAccuracy >= 15) {
     print("Weak password");
   } else {
     print("very weak password");
