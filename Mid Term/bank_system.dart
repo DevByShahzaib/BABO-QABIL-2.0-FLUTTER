@@ -59,27 +59,34 @@ class BankAcount {
     if (yearsPlan > 0) {
       if (yearsPlan <= 1) {
         num interestRate = (balance * 40 * yearsPlan) / 100; // 40% as interest
-        print("Your bank interet will be $interestRate");
+        print("Your bank interest will be $interestRate");
+        display();
       } else if (yearsPlan <= 2) {
         num interestRate = (balance * 20 * yearsPlan) / 100; // 20% as interest
-        print("Your bank interet will be $interestRate");
+        print("Your bank interest will be $interestRate");
+        display();
       } else if (yearsPlan <= 3) {
         num interestRate = (balance * 10 * yearsPlan) / 100; // 10% as interest
-        print("Your bank interet will be $interestRate");
+        print("Your bank interest will be $interestRate");
+        display();
       } else if (yearsPlan <= 4) {
         num interestRate = (balance * 5 * yearsPlan) / 100; // 5% as interest
-        print("Your bank interet will be $interestRate");
+        print("Your bank interest will be $interestRate");
+        display();
       } else if (yearsPlan <= 5) {
         num interestRate =
             (balance * 2.5 * yearsPlan) / 100; // 2.5% as interest
-        print("Your bank interet will be $interestRate");
+        print("Your bank interest will be $interestRate");
+        display();
       } else if (yearsPlan > 5) {
         num interestRate = (balance * 1.5 * yearsPlan) /
             100; // above 5 years interest will be 1.5%
-        print("Your bank interet will be $interestRate");
+        print("Your bank interest will be $interestRate");
+        display();
       }
     } else {
       print('Sorry...! this service is not allowed');
+      display();
     }
   }
 
@@ -107,17 +114,17 @@ class BankAcount {
     stdout.write("Confirm your Account Number :");
     var temp = stdin.readLineSync()!;
     if (temp == AccountNumber) {
-      stdout.write("Enter you desire amount");
+      stdout.write("Enter you desire amount :");
       var amount = int.parse(stdin.readLineSync()!);
       if (balance >= amount) {
-        balance -= int.parse(stdin.readLineSync()!);
-        print('Withdraw successfully');
+        balance -= amount;
+        print("Withdraw successfully");
       } else {
         print(
-            "Sorry...!,Your current balance is less than your desire ammount...");
+            "Sorry!,Your current balance is less than your desired amount...");
       }
     } else {
-      print("Invalid pin...");
+      print("Invalid pin");
     }
     display();
   }
