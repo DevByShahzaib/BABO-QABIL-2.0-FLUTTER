@@ -25,3 +25,10 @@
 
 <hr>
 
+<h1>Mid Term Questions</h1>
+<h2><p><i>Here is my Mid Term questions that I have done by my own and write a code dynamically that is additional feature is program will tell about bank policy, account type according to your years plan</i></p></h2>
+<p>I have Done this very Earlier</p>
+
+![Screenshot (8)](https://github.com/DevByShahzaib/Bano-Qabil-2.0-Flutter/assets/108393358/9d2c2421-b19c-408f-a712-e7e768bfc1c9)
+
+
