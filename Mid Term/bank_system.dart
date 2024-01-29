@@ -91,10 +91,14 @@ class BankAcount {
   }
 
   createPin() {
-    stdout.write("Enter your Account Number :");
-    AccountNumber += stdin.readLineSync()!;
-    print('Account number set successfully');
-    display();
+    if (AccountNumber.isEmpty) {
+      stdout.write("Enter your Account Number :");
+      AccountNumber = stdin.readLineSync()!;
+      print('Account number set successfully');
+      display();
+    } else {
+      print('Account Number is already set');
+    }
   }
 
   deposite() {
