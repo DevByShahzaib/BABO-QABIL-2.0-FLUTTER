@@ -15,13 +15,13 @@ class Student {
 
   display() {
     print("""
-          1. Enter 1 to set your name :
-          2. Enter 2 to set your id :
-          3. Enter 3 to add your courses :
-          4. Enter 4 to drop your course :
-          5. Enter 5 to display your courses :
-          6. Enter 6 to display your all data :
-          7. Enter 7 to exit :
+          1. Enter 1 to SYet Your Name :
+          2. Enter 2 to Set Your ID :
+          3. Enter 3 to Add Your Courses :
+          4. Enter 4 to Drop our Course :
+          5. Enter 5 to Display Your Courses :
+          6. Enter 6 to Display Your All Data :
+          7. Enter 7 to Exit :
           """);
 
     var userInput = int.parse(stdin.readLineSync()!);
@@ -30,13 +30,17 @@ class Student {
     } else if (userInput == 2) {
       set_id();
     } else if (userInput == 3) {
-      stdout.write('Enter your Course Name :');
-      var temp = stdin.readLineSync()!;
-      print("$temp is added to your course list");
-      add_course(temp);
+      print('how many courses do you want to add ?');
+      var temp = int.parse(stdin.readLineSync()!);
+      for (var i = 0; i < temp; i++) {
+        print('enter course name:');
+        var tempo = stdin.readLineSync()!;
+        add_course(tempo);
+      }
+
       display();
     } else if (userInput == 4) {
-      stdout.write('Enter your Course Name :');
+      stdout.write('Enter your Course that you want to drop :');
       var temp = stdin.readLineSync()!;
       if (courses.contains(temp)) {
         print("$temp is dropped from your course list");
