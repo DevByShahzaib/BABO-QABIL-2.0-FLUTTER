@@ -1,16 +1,5 @@
-# chess_game_ui
+# Completed Chess Game UI by my Own's complex logic
 
-A new Flutter project.
+![Screenshot_1707134956](https://github.com/DevByShahzaib/Bano-Qabil-2.0-Flutter/assets/108393358/ceadeda5-6ef3-4c07-b8cb-8692d4c44293)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<hr>
