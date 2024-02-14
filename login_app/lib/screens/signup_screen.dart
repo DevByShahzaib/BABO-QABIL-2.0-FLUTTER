@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_app/screens/signup_screen.dart';
+import 'package:login_app/password_logic.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
+  TextEditingController password = TextEditingController();
+  var result;
   bool isVisible = true;
+
+  abc() {
+    var obj1 = Password();
+    var passwordInOrder = obj1.generatePassword(10, 3, 3);
+    var obj2 = StringShuffler(passwordInOrder);
+    result = obj2.shuffled;
+    password.text = result;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,13 +48,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           backgroundColor: const Color(0xffFFFFFF),
                         ),
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignupScreen()));
+                          Navigator.pop(context);
                         },
                         child: const Text(
-                          'SIGN UP',
+                          'SIGN IN',
                           style: TextStyle(color: Color(0xff2F80ED)),
                         )),
                   )),
@@ -52,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                'Sign In To Continue',
+                'New User? Get Started Now',
                 style: GoogleFonts.roboto(
                     fontSize: 24, color: const Color(0xff828282)),
               ),
@@ -133,6 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SizedBox(
                         height: 40,
                         child: TextField(
+                          controller: password,
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: isVisible,
                           decoration: InputDecoration(
@@ -143,8 +153,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 },
                                 child: Icon(
                                   isVisible
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
                                   color: Color(0xff000000),
                                 ),
                               ),
@@ -159,18 +169,40 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: 330,
-                      height: 40,
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xff2F80ED)),
-                          onPressed: () {},
-                          child: Text(
-                            'SIGN IN',
-                            style: GoogleFonts.cambo(
-                                color: const Color(0xffFFFFFF), fontSize: 20),
-                          )),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: 150,
+                          height: 40,
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xff2F80ED)),
+                              onPressed: () {},
+                              child: Text(
+                                'SIGN UP',
+                                style: GoogleFonts.cambo(
+                                    color: const Color(0xffFFFFFF),
+                                    fontSize: 20),
+                              )),
+                        ),
+                        SizedBox(
+                          width: 150,
+                          height: 40,
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xff2F80ED)),
+                              onPressed: () {
+                                abc();
+                              },
+                              child: Text(
+                                'Generate',
+                                style: GoogleFonts.cambo(
+                                    color: const Color(0xffFFFFFF),
+                                    fontSize: 20),
+                              )),
+                        ),
+                      ],
                     ),
                     const Text('Terms and Conditions | Primacy Policy')
                   ],
