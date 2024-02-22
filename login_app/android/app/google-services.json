@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1042464007827",
+    "project_id": "bn-02-login-app",
+    "storage_bucket": "bn-02-login-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042464007827:android:3cb65f762e009637b20f66",
+        "android_client_info": {
+          "package_name": "com.example.login_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAg8aNxXtWYM2pYiPt25fAb_sCaIKP_fZg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

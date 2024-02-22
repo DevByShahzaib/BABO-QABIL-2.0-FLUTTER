@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_app/password_logic.dart';
+import 'package:login_app/screens/home_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -11,6 +13,7 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   TextEditingController password = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   var result;
   bool isVisible = true;
 
@@ -21,6 +24,28 @@ class _SignupScreenState extends State<SignupScreen> {
     result = obj2.shuffled;
     password.text = result;
     setState(() {});
+  }
+
+  register() async {
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: password.text,
+      );
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+      emailController.clear();
+      password.clear();
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -118,6 +143,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       child: SizedBox(
                         height: 40,
                         child: TextField(
+                          controller: emailController,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
@@ -178,7 +204,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xff2F80ED)),
-                              onPressed: () {},
+                              onPressed: register,
                               child: Text(
                                 'SIGN UP',
                                 style: GoogleFonts.cambo(

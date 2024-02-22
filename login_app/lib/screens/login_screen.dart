@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login_app/screens/home_screen.dart';
 import 'package:login_app/screens/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -11,6 +13,26 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isVisible = true;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  login() async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      emailController.clear();
+      passwordController.clear();
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,6 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SizedBox(
                         height: 40,
                         child: TextField(
+                          controller: emailController,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
@@ -133,6 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SizedBox(
                         height: 40,
                         child: TextField(
+                          controller: passwordController,
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: isVisible,
                           decoration: InputDecoration(
@@ -165,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xff2F80ED)),
-                          onPressed: () {},
+                          onPressed: login,
                           child: Text(
                             'SIGN IN',
                             style: GoogleFonts.cambo(
